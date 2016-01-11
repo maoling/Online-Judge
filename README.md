@@ -1,2 +1,2 @@
-# learngit
-some solutions for the online judge
+# README
+some solutions to the online judge
