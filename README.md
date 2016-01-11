@@ -1,2 +1,2 @@
-# README(hahahah)
+# README
 some solutions to the online judge

@@ -14,9 +14,9 @@ abcde cdefg
 public class Main__1535 {
 	public static void main(String args[]) {
 		Scanner cin = new Scanner(System.in);
-		int n;
+		String str1,str2;
 		while (cin.hasNext()) {
-			n = cin.nextInt(); 
+			str1 = cin.next();str2 = cin.next();
 			
 			
 		}
