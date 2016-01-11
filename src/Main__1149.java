@@ -28,17 +28,15 @@ public class Main__1149 {
 			char charArray[] = str.toCharArray();
 			
 			for(int i=0;i<charArray.length;i++){
-				for(int j=i;j<charArray.length;j++){
-					
-						String temp = str.substring(i,j);
-						if(map.containsKey(temp)){
-							Integer value = map.get(temp);
-							map.put(temp, value.intValue()+1);
-						}else{
-							
-						   map.put(temp, 1);
-						}
-					}	
+				for(int j=i+1;j<=charArray.length;j++){				
+					String temp = str.substring(i,j);//substring 不包括endIndex位置的字符
+					if(map.containsKey(temp)){
+						Integer value = map.get(temp);
+						map.put(temp, value.intValue()+1);
+					}else{						
+					   map.put(temp, 1);
+					}
+				}	
 			}
 			
 			
