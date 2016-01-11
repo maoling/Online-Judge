@@ -11,7 +11,7 @@ import java.util.*;
 abcde cdefg
 ÑùÀıÊä³ö£º
  * */
-public class Main__1535 {
+public class Main__1535_1 {
 	public static void main(String args[]) {
 		Scanner cin = new Scanner(System.in);
 		String str1,str2;
