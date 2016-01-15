@@ -12,9 +12,15 @@ import java.util.*;
 样例输入：
 4
 1 3 4 2
+5
+2 3 4 5 5
+3
+1 1 1
 样例输出：
 4
 1 2 3
+1
+5
 提示：
 如果数组中只有一个数，当第一行将其输出后，第二行请输出"-1"。
  * */
@@ -22,10 +28,45 @@ public class Main_1185 {
 	public static void main(String args[]) {
 		Scanner cin = new Scanner(System.in);
 		int n;
+		
 		while (cin.hasNext()) {
-			n = cin.nextInt(); 
-			
-			
+			ArrayList<Integer> intArray = new ArrayList<Integer>();
+			n = cin.nextInt();
+	        int maxIndex = 0;
+	        int max = cin.nextInt();
+	        if(n == 1){
+				System.out.println(max);
+				System.out.println("-1");
+				continue;
+			}
+	        intArray.add(max);	
+	        
+			for(int i=1;i<n;i++){
+				int temp = cin.nextInt();
+				intArray.add(temp);				
+				if(temp>max){
+					max = temp;
+					maxIndex = i;
+				}
+			}
+			intArray.remove(maxIndex);
+			Collections.sort(intArray, new Comparator<Integer>() {
+	            public int compare(Integer arg0, Integer arg1) {
+	                return arg0-arg1;
+	            }
+		    });
+			System.out.println(max);
+			int flag =0;
+			for(int i=0;i<intArray.size();i++){
+				if(flag == 0){
+				  System.out.print(intArray.get(i));
+				  flag =1;
+				}else{
+				  System.out.print(" "+intArray.get(i));
+				}
+				
+			}
+			System.out.println();
 		}
 	}
 }
