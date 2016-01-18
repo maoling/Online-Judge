@@ -13,40 +13,58 @@ import java.util.*;
 181
  * */
 public class Main_1208 {
+	static int k=0;
+	static void Convert(int []a, int len,int []b, int m, int n)
+	{
+	        
+	        int i = 0;
+	        while (i < len)
+	        {
+	                
+	                int r = 0;
+	                for (int j = i; j < len; j++)
+	                {
+	                        r = r * m + a[j];
+	                        a[j] = r / n;
+	                        r %= n;
+	                }
+	                b[k++] = r;
+	                if (a[i] == 0)
+	                {
+	                        i++;
+	                }
+	        }
+	}
+	
 	public static void main(String args[]) {
 		Scanner cin = new Scanner(System.in);
 		String str;
 		while (cin.hasNext()) {
-			int []res = new int [4000];
+			
 			str = cin.nextLine();
 			char []charArray =str.toCharArray();
-			int []num = new int[charArray.length];
+			int []num = new int[1000];
+			int []res = new int [4000];
 			
 			for(int i=0;i<charArray.length;i++){
 				num[i] = charArray[i]-'0';
 			}
 			
-			int len = charArray.length;
-			int i=0,len_res=0;
-			while(i<len){
-				res[len_res++] = (num[len-1])%2;
-				int carry = 0;
-				
-				for(int j=i;j<len;j++){
-					int temp = num[j];
-					num[j] = (num[j]+carry)/2;
-					carry=((temp&1)==1)?10:0;
-					if(num[i] == 0){
-						i++;
-					}
-				}
-			}
-			int sum = 0;
-			for(int j=0;j<len_res;j++){
-				sum = sum+res[j]*(int)Math.pow(2, len_res-1-j);
-				
-			}
-			System.out.println(sum);
+			Convert(num,charArray.length, res,10,2);
+			int temp = k;
+			Convert(res,temp, num,2,10);
+			int i = charArray.length - 1;
+			while (i > 0 && num[i] == 0)  //处理前导0 
+            {
+                    i--;
+            }
+            for (; i >= 0; i--)
+            {
+                    System.out.println(num[i]);
+            }
+            System.out.println();
 		}
 	}
+	
+	
 }
