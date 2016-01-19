@@ -1,4 +1,6 @@
 import java.util.*;
+
+import com.sun.javafx.scene.layout.region.Margins.Converter;
 /*
 题目描述：
     对于一个十进制数A，将A转换为二进制数，然后按位逆序排列，再转换为十进制数B，我们乘B为A的二进制逆序数。
@@ -17,36 +19,48 @@ public class Main_1208 {
 		Scanner cin = new Scanner(System.in);
 		String str;
 		while (cin.hasNext()) {
-			int []res = new int [4000];
+			
 			str = cin.nextLine();
 			char []charArray =str.toCharArray();
-			int []num = new int[charArray.length];
+			int []num = new int[1010];
+			int []res = new int [4040];
 			
 			for(int i=0;i<charArray.length;i++){
 				num[i] = charArray[i]-'0';
 			}
+			//http://t.jobdu.com/viewthread.php?tid=7931&rpid=171372&ordertype=0&page=2#pid171372   20#
+			convert(num, res, 10, 2);
+			convert(res, num, 2, 10);
+			int i = charArray.length - 1;
+            while (i > 0 && num[i] == 0)  //处理前导0 
+            {
+                    i--;
+            }
+			for(;i>=0;i--){
+				System.out.print(num[i]);
+			}
+			System.out.println();
+		}
+	}
+	
+	static void convert(int []a,int len_a, int []b,int len_b,int m,int n ){
+				
+		
+		int i=0;
+		int len_res=0;
+		while(i<len_a){		
+			int r = 0;
 			
-			int len = charArray.length;
-			int i=0,len_res=0;
-			while(i<len){
-				res[len_res++] = (num[len-1])%2;
-				int carry = 0;
-				
-				for(int j=i;j<len;j++){
-					int temp = num[j];
-					num[j] = (num[j]+carry)/2;
-					carry=((temp&1)==1)?10:0;
-					if(num[i] == 0){
-						i++;
-					}
-				}
-			}
-			int sum = 0;
-			for(int j=0;j<len_res;j++){
-				sum = sum+res[j]*(int)Math.pow(2, len_res-1-j);
+			for(int j=i;j<len_a;j++){
+				r = r*m+a[j];
+				a[j] = r/n;
+				r%=n;				
 				
 			}
-			System.out.println(sum);
+			b[len_res++] = r;
+			if(a[i] == 0){
+				i++;
+			}
 		}
 	}
 }
