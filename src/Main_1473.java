@@ -1,4 +1,6 @@
 import java.util.*;
+
+import com.sun.org.apache.xpath.internal.functions.FuncBoolean;
 /*
 题目描述：
 　　大家都知道，数据在计算机里中存储是以二进制的形式存储的。
@@ -27,24 +29,40 @@ public class Main_1473 {
 	public static void main(String args[]) {
 		Scanner cin = new Scanner(System.in);
 		int n;
-		int res[];
+		
 		while (cin.hasNext()) {
 			n = cin.nextInt(); 
-			res = new int[50];
-			int len = 0;
-			while(n!=0){
-				res[len++] = n%2;
-				n/=2;
+			int []num = new int[n];
+			for(int i=0;i<n;i++){
+				num[i] = cin.nextInt();
 			}
-			for(int i=len;i>=0;i--){
-				if(res[i]==0){
-					continue;
-				}else{
-					System.out.print(res[i]);
-				}
+			for(int i=0;i<n;i++){
+				fun(num[i]);
 			}
-			System.out.println();
+			
+			
 			
 		}
+	}
+	
+	static void fun(int n){
+		int res[] = new int[50];
+		int len = 0;
+		if(n==0){
+		  System.out.println(n);
+		  return ;
+		}
+		while(n!=0){
+			res[len++] = n%2;
+			n/=2;
+		}
+		int i = len-1;
+		while(res[i]==0){
+			i--;
+		}
+		for(;i>=0;i--){	
+			System.out.print(res[i]);
+		}
+		System.out.println();
 	}
 }
