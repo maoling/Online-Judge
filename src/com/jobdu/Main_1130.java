@@ -1,54 +1,130 @@
 package com.jobdu;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 /*
-题目描述：
-有一个网络日志，记录了网络中计算任务的执行情况，每个计算任务对应一条如下形式的日志记录：
-“hs_10000_p”是计算任务的名称，
-“2007-01-17 19:22:53,315”是计算任务开始执行的时间“年-月-日 时：分：秒，毫秒”， 
-“253.035(s)”是计算任务消耗的时间(以秒计)
-hs_10000_p 2007-01-17 19:22:53,315 253.035(s)
-请你写一个程序，对日志中记录计算任务进行排序。
-时间消耗少的计算任务排在前面，时间消耗多的计算任务排在后面。
-如果两个计算任务消耗的时间相同，则将开始执行时间早的计算任务排在前面。
-输入：
-日志中每个记录是一个字符串，每个字符串占一行。最后一行为空行，表示日志结束。日志中最多可能有10000条记录。
-计算任务名称的长度不超过10，开始执行时间的格式是YYYY-MM-DD HH:MM:SS,MMM，消耗时间小数点后有三位数字。
-计算任务名称与任务开始时间、消耗时间之间以一个或多个空格隔开，行首和行尾可能有多余的空格。
-输出：
-排序好的日志记录。每个记录的字符串各占一行。
-输入的格式与输入保持一致，输入包括几个空格，你的输出中也应该包含同样多的空格。
-样例输入：
 hs_10000_p   2007-01-17 19:22:53,315     253.035(s)
 hs_10001_p   2007-01-17 19:22:53,315     253.846(s)
-hs_10002_m   2007-01-17 19:22:53,315     129.574(s)
-hs_10002_p   2007-01-17 19:22:53,315     262.531(s)
-hs_10003_m   2007-01-17 19:22:53,318     126.622(s)
-hs_10003_p   2007-01-17 19:22:53,318     136.962(s)
-hs_10005_m   2007-01-17 19:22:53,318     130.487(s)
-hs_10005_p   2007-01-17 19:22:53,318     253.035(s)
-hs_10006_m   2007-01-17 19:22:53,318     248.548(s)
-hs_10006_p   2007-01-17 19:25:23,367    3146.827(s)
-样例输出：
-hs_10003_m   2007-01-17 19:22:53,318     126.622(s)
-hs_10002_m   2007-01-17 19:22:53,315     129.574(s)
-hs_10005_m   2007-01-17 19:22:53,318     130.487(s)
-hs_10003_p   2007-01-17 19:22:53,318     136.962(s)
-hs_10006_m   2007-01-17 19:22:53,318     248.548(s)
+ * 
 hs_10000_p   2007-01-17 19:22:53,315     253.035(s)
-hs_10005_p   2007-01-17 19:22:53,318     253.035(s)
-hs_10001_p   2007-01-17 19:22:53,315     253.846(s)
+ hs_10001_p   2007-01-17 19:22:53,315     253.846(s)
+hs_10002_m    2007-01-17 19:22:53,315     129.574(s)
 hs_10002_p   2007-01-17 19:22:53,315     262.531(s)
-hs_10006_p   2007-01-17 19:25:23,367    3146.827(s)
- * */
+ hs_10003_m   2007-01-17 19:22:53,318     126.622(s)
+hs_10003_p   2007-01-17 19:22:53,318    136.962(s)
+hs_10005_m   2007-01-17 19:22:53,318     130.487(s)
+ hs_10005_p   2007-01-17 19:22:53,318     253.035(s)
+hs_10006_m   2007-01-17 19:22:53,318     248.548(s)
+hs_10006_p    2007-01-17 19:25:23,367   253.035(s)
 
+ * */
 public class Main_1130 {
 	public static void main(String args[]) {
 		Scanner cin = new Scanner(System.in);
-		int n;
-		while (cin.hasNext()) {
-			n = cin.nextInt(); 
-			
-			
+		ArrayList<Log> list=null;
+		Map<Log, String> map = null;
+		Log log = null;		
+		
+						
+		
+        while(cin.hasNext()){
+        	String s = cin.nextLine();
+        	list = new ArrayList<Log>();
+        	map = new HashMap<Log, String>();
+        	
+    		while (!(s.equals("")||s.length()==0)) {			       		
+			    log = new Log();
+				try {
+					String taskName = s.split("\\s+")[0];
+					String startTime_1 = s.split("\\s+")[1];
+					String startTime_2= s.split("\\s+")[2];
+					String runTime= s.split("\\s+")[3];
+					
+					if(taskName.equals("")){
+						
+						log.setTaskName(startTime_1);
+						log.setStartTime(startTime_2+" "+runTime);
+						log.setRunTime(Double.parseDouble(s.split("\\s+")[4].split("\\(")[0]));
+					}else{
+						
+						log.setTaskName(taskName);
+						log.setStartTime(startTime_1+" "+startTime_2);
+						log.setRunTime(Double.parseDouble(runTime.split("\\(")[0]));
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			list.add(log);
+	        map.put(log, s);	
+	        s = cin.nextLine();
+				
 		}
+			
+					
+        Collections.sort(list,new Comparator<Log>() {
+				@Override
+				public int compare(Log o1, Log o2) {
+					if(o1.getRunTime()<o2.getRunTime()){
+						return -1;
+					}else if(o1.getRunTime()>o2.getRunTime()){
+						return 1;											
+					}else{	
+						SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss,SSS");
+						Date acceptTime1=null;
+					    Date acceptTime2=null;
+						try {
+							acceptTime1 = sdf.parse(o1.getStartTime());
+							acceptTime2 = sdf.parse(o2.getStartTime());
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					        
+					    //对日期字段进行升序，如果欲降序可采用before方法
+					    if(acceptTime1.after(acceptTime2)){
+					    	return 1;
+					    }else{
+					    	return -1;
+					    }					    						   
+					}					 
+				}        	           	          	   
+		});
+	
+        for(Log l:list){
+        	 System.out.println(map.get(l));  
+        }
+       
+      }
+           
+		
 	}
+}
+
+
+class Log{
+	private String taskName;
+	public String getTaskName() {
+		return taskName;
+	}
+	public void setTaskName(String taskName) {
+		this.taskName = taskName;
+	}
+	public String getStartTime() {
+		return startTime;
+	}
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
+	}
+	
+	private String startTime;
+	private double runTime;
+	public double getRunTime() {
+		return runTime;
+	}
+	public void setRunTime(double runTime) {
+		this.runTime = runTime;
+	}
+
+
 }
