@@ -18,35 +18,36 @@ public class Main_1349 {
 		Scanner cin = new Scanner(System.in);
 		int n,m;
 		int[] arr=null;
-		int[] arr2=null;
-		Map<Integer, Integer> map =null;
+
 		while (cin.hasNext()) {
 			n = cin.nextInt(); 
-			arr = new int[n];
-			map = new HashMap<Integer, Integer>();
+			arr = new int[2000000];
+			
 			for(int i=0;i<n;i++){
-				arr[i] = cin.nextInt();
-				if(map.containsKey(arr[i])){
-					int val =map.get(arr[i]).intValue();
-					val++;
-					map.put(arr[i], val);
-				}else{
-					map.put(arr[i], 1);
-				}
+				arr[cin.nextInt()]++;			
 			}
 			m = cin.nextInt();
-			arr2 = new int[m];
+			
 			for(int i=0;i<m;i++){
-				arr2[i] = cin.nextInt();
+				System.out.println(arr[cin.nextInt()]);
 			}
-			for(int i=0;i<m;i++){
-				if(map.get(arr2[i])==null){
-					System.out.println("0");
-				}else{
-					System.out.println(map.get(arr2[i]));
-				}
+
+				
+			}
+	}
+	static void fun(int arr[],int queryNum){
+		int low = 0;
+		int high = arr.length-1;
+		int mid = low+(high-low)/2;
+		while(low<high){
+			if(queryNum<arr[mid]){
+				high = mid-1;
+			}else if(queryNum>arr[mid]){
+				low = mid+1;
+			}else{
 				
 			}
 		}
+		
 	}
 }
