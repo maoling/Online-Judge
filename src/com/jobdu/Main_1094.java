@@ -19,6 +19,7 @@ import java.util.Scanner;
  amoaolaoiaong ao
  afaf af 
  abab ab
+ acdc cd
  ÑùÀýÊä³ö£º
  3
  * */
@@ -33,24 +34,38 @@ public class Main_1094 {
 		while (cin.hasNext()) {
 			s = cin.next();
 			s2 = cin.next();
-			check(s, s2);
+			System.out.println(check(s, s2));
 		}
 	}
 
-	public static void check(String s, String s2) {
+	public static int check(String s, String s2) {
 
 		int m = s.length();
 		int n = s2.length();
 		int count = 0;
-		boolean flag = true;
+		int k = 0;
+		boolean flag;
 		for (int i = 0; i < m; i++) {// abab
-			for (int j = i; j < (i + n) && (i + n) < m; j++) {// ab
-				if (s.charAt(j) == s2.charAt()) {
-
+			k = i;
+			flag = true;
+			if(k <= m-n){
+				for (int j = 0;j<n;j++) {// ab					
+					if (s.charAt(k) == s2.charAt(j)) {
+	                    k++;
+					}else{
+						flag = false;
+						break;
+					}		
 				}
+				if(flag){
+	            	count++;
+	            }
+			}else{
+				
+				break;
 			}
-
+            
 		}
-		System.out.println(count);
+		return count;
 	}
 }
