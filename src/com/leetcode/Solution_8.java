@@ -6,14 +6,17 @@ import java.util.*;
 156 789wrwe
  100000000300
  -888888888888888
+ -2147483648
+ 2147483647
  * */
 public class Solution_8 {
 	
 	public int myAtoi(String str) {
 		
-	   int result = 0, i = 0,sign=1;
+	   long result = 0;
+	   int i = 0,sign=1;
        if(str == null || str.length() == 0)
-    	   return result; 
+    	   return 0; 
        while(str.charAt(i) ==' ' && i<str.length()){
     	   i++;
        }
@@ -21,19 +24,20 @@ public class Solution_8 {
     	   sign = str.charAt(i) =='+'? 1:-1;
     	   i++;
        }
-       while(str.charAt(i) >='0' && str.charAt(i) <='9' && i<str.length() ){
+       while( i<str.length() ){   	
+    	    if(str.charAt(i) <'0' || str.charAt(i) >'9')
+    		   break;
     	    result = result*10 + (str.charAt(i)-'0'); 
-    	    if(result > Integer.MAX_VALUE ){
-    	    	result = Integer.MAX_VALUE;
-    	    }
-    	    if(result < Integer.MIN_VALUE){
-    	    	result = Integer.MIN_VALUE;
-    	    }
+    	    if(sign == 1 && result > Integer.MAX_VALUE )
+    	    	return Integer.MAX_VALUE;   	    
+    	    if(sign == -1 && sign*result < Integer.MIN_VALUE)
+    	    	return Integer.MIN_VALUE;   	    
     	    i++;
        }
        
-       return sign*result;
+       return (int) (sign*result);
     }
+	
 	
 	
 	public static void main(String args[]) {
