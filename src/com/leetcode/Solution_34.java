@@ -3,11 +3,11 @@ import java.util.*;
 /*
 
  * */
-public class Solution_template {
+public class Solution_34 {
 	
 	public static void main(String args[]) {
 		
-		Solution_template solution = new Solution_template();
+		Solution_34 solution = new Solution_34();
 
 	}
 }
