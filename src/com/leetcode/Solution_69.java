@@ -1,22 +1,46 @@
 package com.leetcode;
 import java.util.*;
 /*
-
+https://leetcode.com/discuss/58631/3-4-short-lines-integer-newton-every-language
+http://blog.csdn.net/lu597203933/article/details/44851777
  * */
 public class Solution_69 {
 	public int mySqrt(int x) {
-		int i;
-        for(i=1;i<=(x/i);++i){
-        	System.out.println(i +" "+(x/i));
+		double begin = 0,end = x;
+		double result = 1,mid = 1;
+        while(Math.abs(result-x) > 0.000001){
+        	mid = (begin + end)/2;
+        	result = mid * mid;
+        	if(result > x)
+        		end = mid;       		
+        	else
+        		begin = mid;        	
+        	/*if(result == x) return (int)mid;
+        	else if(result < x)
+        		begin = mid;
+        	else{
+        		end = mid;
+        	}*/
         }
-       
-		return i; 
+        return (int)mid;
     }
+	/*accepted
+	 * public int mySqrt(int x) {
+		int i;
+        for(i=1;i<=(x/i);++i){       	
+        }       
+		return i-1; 
+    }*/
 	public static void main(String args[]) {
 		
 		Solution_69 solution = new Solution_69();
-        int a = -16;
-		System.out.println(solution.mySqrt(a));;
+		Scanner cin = new Scanner(System.in);
+		int n;
+		while (cin.hasNext()) {
+			n = cin.nextInt(); 	        
+			System.out.println(solution.mySqrt(n));			
+		}
+	
 	}
 }
 
