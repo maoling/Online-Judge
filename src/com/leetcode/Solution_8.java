@@ -11,6 +11,20 @@ import java.util.*;
  * */
 public class Solution_8 {
 	
+	public static void main(String args[]) {
+		Scanner cin = new Scanner(System.in);
+		String s = null;
+		Solution_8 solution = null;
+		while (cin.hasNext()) {
+			solution = new Solution_8();
+			s = cin.nextLine();
+			System.out.println(solution.myAtoi(s));;
+			
+		}
+	}
+	
+	
+	
 	public int myAtoi(String str) {
 		
 	   long result = 0;
@@ -37,19 +51,5 @@ public class Solution_8 {
        
        return (int) (sign*result);
     }
-	
-	
-	
-	public static void main(String args[]) {
-		Scanner cin = new Scanner(System.in);
-		String s = null;
-		Solution_8 solution = null;
-		while (cin.hasNext()) {
-			solution = new Solution_8();
-			s = cin.nextLine();
-			System.out.println(solution.myAtoi(s));;
-			
-		}
-	}
 }
 

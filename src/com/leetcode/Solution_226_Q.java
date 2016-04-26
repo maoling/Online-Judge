@@ -5,27 +5,7 @@ import java.util.*;
 https://leetcode.com/discuss/90119/simple-java-0ms-implementation
  * */
 public class Solution_226_Q {
-   //先序遍历
-	public void preOrder(TreeNode node){
-		if(node != null){
-			System.out.print(node.val+" ");
-			preOrder(node.left);
-			preOrder(node.right);
-		}
-		
-	}
-	
-	public TreeNode invertTree(TreeNode root) {
-		if(root == null)
-			return null;
-		TreeNode tmp = root.left;
-		root.left = invertTree(root.right);
-		root.right = invertTree(tmp);
-		
-		return root;       
-    }
-	
-	public static void main(String args[]) {
+   public static void main(String args[]) {
 		
 		Scanner cin = new Scanner(System.in);
 		
@@ -43,14 +23,27 @@ public class Solution_226_Q {
 		solution.invertTree(root);
 		solution.preOrder(root);
 	}
-}
-
-class TreeNode{
-	int val;
-	TreeNode left;
-	TreeNode right;
-	TreeNode(int x){
-		val = x;
+	
+	public TreeNode invertTree(TreeNode root) {
+		if(root == null)
+			return null;
+		TreeNode tmp = root.left;
+		root.left = invertTree(root.right);
+		root.right = invertTree(tmp);
+		
+		return root;       
+    }
+	
+	//先序遍历
+	public void preOrder(TreeNode node){
+		if(node != null){
+			System.out.print(node.val+" ");
+			preOrder(node.left);
+			preOrder(node.right);
+		}
+		
 	}
 }
+
+
 

@@ -8,16 +8,6 @@ import java.util.*;
  * */
 public class Solution_7 {
 	
-	public int reverse(int x) {
-		  long sum = 0;		
-	      while(x != 0){  	    	  
-	    	  sum = sum*10+x%10;
-	    	  x/=10;	    	  
-	      }
-	      return (sum >Integer.MAX_VALUE || sum < Integer.MIN_VALUE) ? 0:(int)sum;
-	}
-	
-	
 	public static void main(String args[]) {
 		Scanner cin = new Scanner(System.in);
 		int n;
@@ -28,6 +18,16 @@ public class Solution_7 {
 			System.out.println(solution.reverse(n));
 			
 		}
+	}
+	
+	
+	public int reverse(int x) {
+		  long sum = 0;		
+	      while(x != 0){  	    	  
+	    	  sum = sum*10+x%10;
+	    	  x/=10;	    	  
+	      }
+	      return (sum >Integer.MAX_VALUE || sum < Integer.MIN_VALUE) ? 0:(int)sum;
 	}
 }
 

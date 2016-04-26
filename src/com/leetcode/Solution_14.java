@@ -4,7 +4,15 @@ import java.util.*;
 
  * */
 public class Solution_14 {
-	 //最长公共前缀串
+	 public static void main(String args[]) {
+		
+		Solution_14 solution =new Solution_14();
+		
+        String[] string = {"abca","aba","aaab"};
+        System.out.println(solution.longestCommonPrefix(string));
+	}
+	 
+	//最长公共前缀串
 	 public String longestCommonPrefix(String[] strs) {
 		if(strs.length == 0 || strs == null)  return "";
 		int minlen = strs[0].length();
@@ -23,13 +31,5 @@ public class Solution_14 {
 		
 		return strs[0].substring(0,minlen);
 	 }
-	 
-	public static void main(String args[]) {
-		
-		Solution_14 solution =new Solution_14();
-		
-        String[] string = {"abca","aba","aaab"};
-        System.out.println(solution.longestCommonPrefix(string));
-	}
 }
 
