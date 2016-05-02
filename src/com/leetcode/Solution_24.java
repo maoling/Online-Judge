@@ -3,11 +3,15 @@ import java.util.*;
 /*
 
  * */
-public class Solution_template {
+public class Solution_24 {
+	public ListNode swapPairs(int n){
+		
+		return null;	
+	}
 	
 	public static void main(String args[]) {
 		
-		Solution_template solution = new Solution_template();
+		Solution_24 solution = new Solution_24();
 		
 		
 		/*Scanner cin = new Scanner(System.in);

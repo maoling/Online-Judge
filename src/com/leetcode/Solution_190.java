@@ -16,7 +16,10 @@ public class Solution_190 {
 	}
 	
 	public static void main(String args[]) {
-		System.out.println(reverseBits(0));
+		System.out.println(reverseBits(43261596));
+		/*int n = 7;
+		System.out.println( n>>1);
+		System.out.println(n>>>1);*/
 		/*Solution_190 solution = new Solution_190();
 		Scanner cin = new Scanner(System.in);
 		int n;
