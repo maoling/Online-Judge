@@ -4,17 +4,30 @@ import java.util.*;
 
  * */
 public class Solution_206_Q {
-	public ListNode reverseList(ListNode head){
+	
+	public ListNode reverseList(ListNode head){		
 		if(head == null || head.next == null) return head;
+		
 		ListNode pre = null,curr = null;
 		ListNode tmp = head;
 		while(tmp != null){
 			pre = curr;
 			curr = tmp;
 			tmp = curr.next;
-			curr.next = null;		
+			curr.next = pre;		
 		}
 		return curr;
+		
+		/*ListNode pre = null,curr = null;
+		ListNode tmp = head;	
+		while(tmp != null){
+			pre = curr;
+			curr = tmp;
+			tmp = curr.next;
+			curr.next = pre;		
+		}*/
+		
+	
 		
 		/*while(tmp != null){
 			pre = curr;

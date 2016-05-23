@@ -39,9 +39,7 @@ public class Solution_21 {
 		Solution_21 solution = null;
 		while (cin.hasNext()) {
 			solution = new Solution_21();
-			n = cin.nextInt(); 
-			
-			
+			n = cin.nextInt(); 			
 		}
 	}
 }
