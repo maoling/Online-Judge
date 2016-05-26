@@ -4,11 +4,11 @@ import java.util.*;
 
  * */
 public class Solution_349 {
-	public int[] intersection(int[] num1,int[] num2){
+	public int[] intersection(int[] nums1,int[] nums2){
 		Set<Integer> set1 = new HashSet<Integer>();
 		Set<Integer> set2 = new HashSet<Integer>();
-		for(int i:num1)     set1.add(i);
-		for(int i:num2){
+		for(int i:nums1)     set1.add(i);
+		for(int i:nums2){
 			if(set1.contains(i))	set2.add(i);
 		}
 		int[] res = new int[set2.size()];
