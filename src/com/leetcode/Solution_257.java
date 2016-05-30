@@ -13,6 +13,7 @@ public class Solution_257 {
 		stack.push(root);
 		StringBuilder sb = new StringBuilder();
 		sb.append(root.val);
+		strStack.push(sb);
 		
 		while(!stack.isEmpty()){
 			
@@ -23,11 +24,17 @@ public class Solution_257 {
 							
 				if(tmpNodes.right != null){
 					stack.push(tmpNodes.right);	
-					tmpsb.append("->"+tmpNodes.right.val);		
+					StringBuilder sbr = new StringBuilder();
+					sbr.append(tmpsb);
+					sbr.append("->"+tmpNodes.right.val);
+					strStack.push(sbr);
 			    }
 				if(tmpNodes.left != null){
 					stack.push(tmpNodes.left);	
-					tmpsb.append("->"+tmpNodes.left.val);
+					StringBuilder sbl = new StringBuilder();
+					sbl.append(tmpsb);
+					sbl.append("->"+tmpNodes.left.val);
+					strStack.push(sbl);
 				}
 				if(tmpNodes.left == null && tmpNodes.right == null){
 					list.add(tmpsb.toString());
