@@ -10,27 +10,29 @@ public class Solution_50 {
 		Solution_50 solution = new Solution_50();
 		Scanner cin = new Scanner(System.in);
 		int n;
-		while (cin.hasNext()) {
+		System.out.println(solution.myPow(2, 7));
+		
+		/*while (cin.hasNext()) {
 			n = cin.nextInt(); 
 			
 			
-		}
+		}*/
 	}
 	public double myPow(double x,int n){
 		
-		
-		
-		return n;
-		
-		/*double temp = x;
+		//double temp = x;
 		if(n == 0) 	return 1;
-		temp = myPow(x, n/2);
-		if(n % 2 == 0){
-			return temp * temp;
+		///if(n == 1)  return x;	
+		if(n<0){
+            n = -n;
+            x = 1/x;
+        }
+		return (n%2 == 0) ? myPow(x*x, n/2) : x*myPow(x*x, n/2);
+		
+		/*if(n % 2 == 0){
+			return myPow(x, n/2) * myPow(x, n/2);
 		}else{
-			if(n > 0)
-				return temp *
-			else									
+			return x * myPow(x, n/2) * myPow(x, n/2);									
 		}*/
 		
 	}

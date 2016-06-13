@@ -6,33 +6,33 @@ import java.util.*;
 public class Solution_165 {
 	
 	public int compareVersion(String version1,String version2){
-		int a = Integer.parseInt(version1.split(".")[0]);
-		int b = Integer.parseInt(version1.split(".")[1]);
-		int c = Integer.parseInt(version2.split(".")[0]);
-		int d = Integer.parseInt(version2.split(".")[1]);	
 		
-		if(a < c) return -1;
-		else if(a > c) return 1;
-		else{
-			if(b < d) return -1;
-			else if(b > d) return 1;
-			else return 0;
-		}
+		//double a = Double.parseDouble(version1); // error: no with \\;
+		//double b = Double.parseDouble(version2);
+		//int c = Integer.parseInt(version2.split("\\.")[0]);
+		//int d = Integer.parseInt(version2.split("\\.")[1]);
 		
+		String[] strArray1 = version1.split("\\.");
+		String[] strArray2 = version2.split("\\.");
+		
+		int len = Math.max(strArray1.length, strArray2.length);
+		
+		for(int i=0;i<len;i++){
+			Integer v1 = i<strArray1.length ? Integer.parseInt(strArray1[i]):0; 
+			Integer v2 = i<strArray2.length ? Integer.parseInt(strArray2[i]):0;
+		    if(v1 < v2) return -1;
+		    if(v1 > v2) return 1;
+		}		
+		return 0;
+
 	}
 	
 	public static void main(String args[]) {
 		
+		// error: "0.1"--->"0.0.1"   0.1 < 1.1 < 1.2 < 13.37
 		Solution_165 solution = new Solution_165();
+		System.out.println(solution.compareVersion("1.1","1.1.2"));
 		
-		
-		/*Scanner cin = new Scanner(System.in);
-		int n;
-		while (cin.hasNext()) {
-			n = cin.nextInt(); 
-			
-			
-		}*/
 	}
 }
 

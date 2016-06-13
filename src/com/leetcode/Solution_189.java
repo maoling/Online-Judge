@@ -6,7 +6,9 @@ import java.util.*;
 public class Solution_189 {
 	
 	public void rotate(int[] nums,int k){
+		if(k <= 0) return;
 		int n = nums.length;
+		k %= nums.length;
 		reverse(nums,0,n-k-1);
 		reverse(nums,n-k,n-1);
 		reverse(nums,0,n-1);
@@ -23,8 +25,8 @@ public class Solution_189 {
 	public static void main(String args[]) {
 		
 		Solution_189 solution = new Solution_189();	
-		int[] arr = new int[]{1,2,3,4,5,6,7};
-		solution.rotate(arr,4);
+		int[] arr = new int[]{1};//,2,3,4,5,6,7,8,9};
+		solution.rotate(arr,-1);
 		System.out.println(Arrays.toString(arr));
 		/*Scanner cin = new Scanner(System.in);
 		int n;

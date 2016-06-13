@@ -8,7 +8,15 @@ public class Solution_206_Q {
 	public ListNode reverseList(ListNode head){		
 		if(head == null || head.next == null) return head;
 		
-		ListNode pre = null,curr = null;
+		ListNode newHead = null;
+		while(head != null){
+			ListNode next = head.next;
+			head.next = newHead;
+			newHead = head;
+			head = next;
+		}
+		return newHead;
+		/*ListNode pre = null,curr = null;
 		ListNode tmp = head;
 		while(tmp != null){
 			pre = curr;
@@ -16,7 +24,7 @@ public class Solution_206_Q {
 			tmp = curr.next;
 			curr.next = pre;		
 		}
-		return curr;
+		return curr;*/
 		
 		/*ListNode pre = null,curr = null;
 		ListNode tmp = head;	

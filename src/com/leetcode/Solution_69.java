@@ -47,6 +47,7 @@ public class Solution_69 {
 	
 	}
 	
+	// good O(log2n)
 	public int mySqrt(int x) {
 		if(x == 0) return 0;
         int start = 1,end =x, mid = 1;
@@ -61,5 +62,7 @@ public class Solution_69 {
 		}
 		return mid;
     }
+
+
 }
 
