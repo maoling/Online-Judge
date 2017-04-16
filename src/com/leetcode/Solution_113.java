@@ -1,5 +1,7 @@
 package com.leetcode;
 import java.util.*;
+
+import sun.java2d.StateTrackable;
 /*
 Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.
 
@@ -20,23 +22,48 @@ return
  * */
 public class Solution_113 {
 	
+	private int sumIntList(List<Integer> rootList) {
+		int sum = 0;
+		if (rootList == null) return -1; 
+		for (Integer val : rootList) {
+			sum += val;
+		}
+		return sum;
+	}
+	
     public List<List<Integer>> pathSum(TreeNode root, int sum) {
     	List<List<Integer>> biglist = new  ArrayList<List<Integer>>();
     	if(root == null ) return biglist;
     	
     	Stack<TreeNode> stack = new Stack<TreeNode>();
-    	Stack<Integer> sumStack = new Stack<Integer>();
-    	
+    	Stack<List<Integer>> sumStack = new Stack<List<Integer>>();  	
     	stack.push(root);
-    	sumStack.push(root.val);
+    	List<Integer> rootList = new ArrayList<>();
+    	rootList.add(root.val);
+    	sumStack.push(rootList);
     	
-    	while(!stack.isEmpty()){
+    	while (!stack.isEmpty()) {
     		
     		TreeNode tmpNode = stack.pop();
-    		Integer tmpVal = sumStack.pop();
-    		if(tmpVal == sum){
-    			
-    		}  			
+    		List<Integer> tmpList = sumStack.pop();
+    		if (tmpNode.left == null || tmpNode.right == null) {
+    		   if (sumIntList(tmpList) == sum) {
+    			   biglist.add(tmpList);
+        	   }
+    		}
+    		
+            if (tmpNode.right != null ) {
+            	stack.push(tmpNode.right);
+            	tmpList.add(tmpNode.right.val);
+            	sumStack.push(tmpList);
+            	tmpList.remove(tmpList.size()-1);
+    		}
+            if (tmpNode.left != null ) {
+            	stack.push(tmpNode.left);
+            	tmpList.add(tmpNode.left.val);
+            	sumStack.push(tmpList);           	
+    		}
+    		  			
     	}
     	
 		return biglist;
