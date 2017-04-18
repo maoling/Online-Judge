@@ -5,7 +5,7 @@ import javax.sound.midi.Soundbank;
 /*
 
  * */
-public class Solution_169 {
+ublic class Solution_169 {
 	//Moore voting algorithm
 	
 	public int majorityElement(int[] nums){

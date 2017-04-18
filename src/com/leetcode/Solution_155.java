@@ -3,7 +3,7 @@ import java.util.*;
 /*
 
  * */
-public class Solution_155 {
+ublic class Solution_155 {
 	
 	public static void main(String args[]) {
 		

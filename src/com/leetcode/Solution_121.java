@@ -5,7 +5,7 @@ import javax.sound.midi.Soundbank;
 /*
 
  * */
-public class Solution_121 {
+ublic class Solution_121 {
 	//15:00 -- 15:45 (45min)
 	public int maxPorfit(int[] prices){	
 		if(prices == null || prices.length == 0)   return  0;

@@ -40,6 +40,7 @@ public class Solution_100 {
 		    }		    
 		}		
 		
+		
 		if(!stackP.isEmpty() || !stackQ.isEmpty())  return false;
 		return true;*/
 		

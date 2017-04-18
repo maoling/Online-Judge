@@ -3,7 +3,7 @@ import java.util.*;
 /*
 
  * */
-public class Solution_160 {
+ublic class Solution_160 {
 	
    	// O(N) O(1) °Ë×ÖÐÎÍ¼--×ÐÏ¸±Ê»­
 	public ListNode getIntersectionNode(ListNode headA,ListNode headB){

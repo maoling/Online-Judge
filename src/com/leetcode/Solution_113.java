@@ -20,7 +20,7 @@ return
    [5,8,4,5]
 ]
  * */
-public class Solution_113 {
+ublic class Solution_113 {
 	
 	private int sumIntList(List<Integer> rootList) {
 		int sum = 0;
