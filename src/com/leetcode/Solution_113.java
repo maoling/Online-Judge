@@ -1,7 +1,7 @@
 package com.leetcode;
-import java.util.*;
-
-import sun.java2d.StateTrackable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 /*
 Given a binary tree and a sum, find all root-to-leaf paths where each path's sum equals the given sum.
 
@@ -20,7 +20,7 @@ return
    [5,8,4,5]
 ]
  * */
-ublic class Solution_113 {
+public class Solution_113 {
 	
 	private int sumIntList(List<Integer> rootList) {
 		int sum = 0;
@@ -35,18 +35,19 @@ ublic class Solution_113 {
     	List<List<Integer>> biglist = new  ArrayList<List<Integer>>();
     	if(root == null ) return biglist;
     	
-    	Stack<TreeNode> stack = new Stack<TreeNode>();
-    	Stack<List<Integer>> sumStack = new Stack<List<Integer>>();  	
+    	Stack<TreeNode> stack = new Stack<TreeNode>();   	 	
     	stack.push(root);
+    	Stack<List<Integer>> sumStack = new Stack<List<Integer>>(); 
     	List<Integer> rootList = new ArrayList<>();
     	rootList.add(root.val);
-    	sumStack.push(rootList);
+    	sumStack.push(rootList);                                                                                                               
     	
     	while (!stack.isEmpty()) {
     		
     		TreeNode tmpNode = stack.pop();
     		List<Integer> tmpList = sumStack.pop();
-    		if (tmpNode.left == null || tmpNode.right == null) {
+    		
+    		if (tmpNode.left == null && tmpNode.right == null) {
     		   if (sumIntList(tmpList) == sum) {
     			   biglist.add(tmpList);
         	   }
@@ -54,14 +55,22 @@ ublic class Solution_113 {
     		
             if (tmpNode.right != null ) {
             	stack.push(tmpNode.right);
-            	tmpList.add(tmpNode.right.val);
-            	sumStack.push(tmpList);
-            	tmpList.remove(tmpList.size()-1);
+            	
+            	List<Integer> list = new ArrayList<>();
+            	list.addAll(tmpList);
+            	list.add(tmpNode.right.val);
+            	
+            	sumStack.push(list);
+            	
     		}
             if (tmpNode.left != null ) {
             	stack.push(tmpNode.left);
-            	tmpList.add(tmpNode.left.val);
-            	sumStack.push(tmpList);           	
+            	
+            	List<Integer> list = new ArrayList<>();
+            	list.addAll(tmpList);
+            	list.add(tmpNode.left.val);
+            	
+            	sumStack.push(list);           	
     		}
     		  			
     	}
