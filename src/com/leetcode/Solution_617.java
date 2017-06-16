@@ -26,27 +26,35 @@ public class Solution_617 {
     public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
     	 TreeNode resultTreeNode = null;
          if (t1 == null && t2 == null) return resultTreeNode;
-         Queue<Integer> queue1 = new LinkedList<Integer>();
-         Queue<Integer> queue2 = new LinkedList<Integer>();
-         queue1.offer(t1.val); 
-         queue2.offer(t2.val);
+         Queue<TreeNode> queue = new LinkedList<TreeNode>();
+         Queue<TreeNode> queue1 = new LinkedList<TreeNode>();
+         Queue<TreeNode> queue2 = new LinkedList<TreeNode>();
+         queue1.offer(t1); 
+         queue2.offer(t2);
          resultTreeNode = new TreeNode(t1.val + t2.val);
+         queue.offer(resultTreeNode);
+         TreeNode tmpNode = null;
          while (!queue1.isEmpty() || !queue2.isEmpty()) {
-        	 queue1.poll(); 
-        	 queue2.poll();
-        	 if (t1.left != null || t2.left != null) {
-        		 int leftVal1 = t1.left != null ? t1.left.val : 0;
-        		 int leftVal2 = t2.left != null ? t2.left.val : 0;
-        		 queue1.offer(leftVal1);
-            	 queue2.offer(leftVal2); 
-            	 resultTreeNode.left = new TreeNode(leftVal1 + leftVal2);
+        	 TreeNode tmpNode1 = queue1.poll(); 
+        	 TreeNode tmpNode2 = queue2.poll();
+        	 tmpNode = queue.poll();
+        	 if (tmpNode1.left != null || tmpNode2.left != null) {
+        		 int leftVal1 = tmpNode1.left != null ? tmpNode1.left.val : 0;
+        		 int leftVal2 = tmpNode2.left != null ? tmpNode2.left.val : 0;
+        		 queue1.offer(tmpNode1.left);
+            	 queue2.offer(tmpNode2.left); 
+            	 TreeNode nodeLeft = new TreeNode(leftVal1 + leftVal2);
+            	 tmpNode.left = nodeLeft;
+            	 queue.offer(nodeLeft);
         	 }
-        	 if (t1.right != null || t2.right != null) {
-        		 int rightVal1 = t1.right != null ? t1.right.val : 0;
-        		 int rightVal2 = t2.right != null ? t2.right.val : 0;
-        		 queue1.offer(rightVal1);
-            	 queue2.offer(rightVal2); 
-            	 resultTreeNode.right = new TreeNode(rightVal1 + rightVal2);
+        	 if (tmpNode1.right != null || tmpNode2.right != null) {
+        		 int rightVal1 = tmpNode1.right != null ? tmpNode1.right.val : 0;
+        		 int rightVal2 = tmpNode2.right != null ? tmpNode2.right.val : 0;
+        		 queue1.offer(tmpNode1.right);
+            	 queue2.offer(tmpNode2.right); 
+            	 TreeNode nodeRight = new TreeNode(rightVal1 + rightVal2);
+            	 tmpNode.right = nodeRight;
+            	 queue.offer(nodeRight);
         	 }
         	 
          } 
