@@ -33,7 +33,6 @@ public class Solution_476 {
 		
 		Solution_476 solution = new Solution_476();
 		
-		
 		/*Scanner cin = new Scanner(System.in);
 		int n;
 		while (cin.hasNext()) {
