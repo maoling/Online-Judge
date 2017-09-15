@@ -1,7 +1,7 @@
 package com.leetcode;
 import java.util.*;
 /*
-
+用一个queue来实现Stack的数据结构
  * */
 public class MyStack_225 {
 	private Queue<Integer> queue = new LinkedList<Integer>();

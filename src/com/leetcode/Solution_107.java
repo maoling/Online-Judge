@@ -23,6 +23,7 @@ public class Solution_107 {
 					queue.offer(tmp.right);
 				}
 			}
+			//ѕ«Го
 			bigList.add(0,smalllist);
 		}
 		

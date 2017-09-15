@@ -5,9 +5,19 @@ import java.util.*;
  * */
 public class Solution_104 {
 	
-	public int maxDepth(TreeNode root){			
+	public int maxDepth(TreeNode root){	
+		/**
+		 *  if(root == null) return 0;
+			int l = maxDepth(root.left);
+			int r = maxDepth(root.right);
+			if(Math.abs(l - r) > 1)	result = false;
+			
+			return Math.max(l, r) + 1;
+		 */
+		//递归；不是很好理解
 		//return root==null ? 0 : 1+Math.max(maxDepth(root.left), maxDepth(root.right)) ;	
-	    //DFS   (好难理解呀，花了不少时间理解)
+	    
+		//DFS   (好难理解呀，花了不少时间理解)
 		/*if(root == null) return 0;
 		Stack<TreeNode> stack = new Stack<TreeNode>();
 		Stack<Integer> value = new Stack<Integer>();
