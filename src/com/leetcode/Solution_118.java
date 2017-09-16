@@ -1,7 +1,12 @@
 package com.leetcode;
 import java.util.*;
 /*
-
+    1
+   1 1
+  1 2 3
+ 1 3 5 1
+1 4 8 6 1
+ 
  * */
 public class Solution_118 {
 	

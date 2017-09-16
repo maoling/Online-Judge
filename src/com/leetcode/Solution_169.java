@@ -1,14 +1,13 @@
 package com.leetcode;
 import java.util.*;
 
-import javax.sound.midi.Soundbank;
 /*
 
  * */
 ublic class Solution_169 {
 	//Moore voting algorithm
 	
-	public int majorityElement(int[] nums){
+	public int majorityElement(int[] nums) {
 		int major = 0,count = 0;
 		for(int i=0;i<nums.length;i++){
 			if(count == 0){

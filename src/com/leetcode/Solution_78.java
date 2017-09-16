@@ -3,7 +3,9 @@ import java.util.*;
 /*
 
  * */
-public class Solution_78 {
+ublic class Solution_78 {
+	//递归的方法怎么做？
+	
 	public List<List<Integer>> subsets(int[] nums){
 		//位运算 实在是精妙
 		List<List<Integer>> allSets = new ArrayList<List<Integer>>();
