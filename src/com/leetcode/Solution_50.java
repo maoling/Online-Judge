@@ -18,6 +18,8 @@ public class Solution_50 {
 			
 		}*/
 	}
+	
+	//直接乘以本身n次oj会超时；需要折半递归
 	public double myPow(double x,int n){
 		
 		//double temp = x;

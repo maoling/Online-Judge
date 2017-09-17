@@ -5,8 +5,7 @@ public class Solution_303_NumArray {
 	public Solution_303_NumArray(int[] nums){
 		numArrays = new int[nums.length];//error
 		int sum = 0;//error
-		for(int i=0;i<nums.length;i++){
-				
+		for(int i=0;i<nums.length;i++){				
 			sum += nums[i];
 			numArrays[i] = sum;
 			

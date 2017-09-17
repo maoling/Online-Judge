@@ -3,7 +3,7 @@ import java.util.*;
 /*
 
  * */
-ublic class Solution_78 {
+public class Solution_78_subsets {
 	//递归的方法怎么做？
 	
 	public List<List<Integer>> subsets(int[] nums){
