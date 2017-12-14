@@ -4,10 +4,10 @@ import java.util.*;
 /*
 
  * */
-public class Solution_50 {
+public class Solution_50_myPow {
 	public static void main(String args[]) {
 		
-		Solution_50 solution = new Solution_50();
+		Solution_50_myPow solution = new Solution_50_myPow();
 		Scanner cin = new Scanner(System.in);
 		int n;
 		System.out.println(solution.myPow(2, 7));

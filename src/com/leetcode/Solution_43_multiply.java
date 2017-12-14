@@ -2,7 +2,7 @@ package com.leetcode;
 import java.util.*;
 
 
-public class Solution_43 {
+public class Solution_43_multiply {
 	public static String multiply(String a,String b){
 		int[] arr = new int[a.length() + b.length()];
 		
